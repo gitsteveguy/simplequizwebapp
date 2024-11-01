@@ -1,6 +1,11 @@
 /* style.css */
+:root {
+  --primary-color: #76c043;
+}
 body {
-  background-color: #121212;
+  background: url("INTRO_ALGOARENA.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #e0e0e0;
   font-family: Arial, sans-serif;
   display: flex;
@@ -12,21 +17,26 @@ body {
 
 .container {
   text-align: center;
-  background-color: #1e1e1e;
+  background-color: #1e1e1eda;
+  scale: 1.25;
   padding: 30px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  width: 350px;
+  width: 50%;
 }
 
 h1 {
-  color: #76c043;
+  color: var(--primary-color);
   margin-bottom: 20px;
   font-size: 1.8rem;
 }
 
 .question-box {
   background-color: #333333;
+  min-height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -36,35 +46,60 @@ h1 {
 
 .timers {
   display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
+  justify-content: space-evenly;
 }
 
 .timer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #76c043;
+  width: 100%;
+  color: var(--primary-color);
 }
 
 .circle-timer {
-  width: 80px;
-  height: 80px;
-  border: 5px solid #76c043; /* Green border for timer */
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+}
+
+svg {
+  transform: rotate(-90deg); /* Rotate to start from the top */
+}
+
+.progress-bg {
+  fill: none;
+  stroke: #333333; /* Background color of the circle */
+  stroke-width: 8;
+}
+
+.progress {
+  fill: none;
+  stroke: var(--primary-color); /* Green progress stroke */
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 251.2; /* Circumference of the circle (2 * π * r) */
+  stroke-dashoffset: 0; /* Starting offset */
+  transition: stroke-dashoffset 1s linear;
+}
+
+.circle-timer span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 1.2rem;
   color: #e0e0e0;
-  position: relative;
-  transition: border-color 1s linear;
+}
+#interval-timer {
+  color: var(--primary-color);
+}
+#total-timer {
+  color: var(--primary-color);
 }
 
 select {
   background-color: #1e1e1e;
   color: #e0e0e0;
-  border: 1px solid #76c043;
+  border: 1px solid var(--primary-color);
   padding: 8px 12px;
   border-radius: 4px;
   margin-bottom: 15px;
@@ -75,7 +110,7 @@ select {
 }
 
 button {
-  background-color: #76c043;
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -96,6 +131,8 @@ button:disabled {
   cursor: not-allowed;
 }
 
-#play-pause-btn {
-  margin-top: 15px;
+.btn-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
