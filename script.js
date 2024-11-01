@@ -9,7 +9,7 @@ let time_interval;
 
 // Fetch the list of available CSV files and populate the dropdown
 async function populateTeamDropdown() {
-  const response = await fetch("/questions/list.json");
+  const response = await fetch("./questions/list.json");
   const files = await response.json();
 
   const teamSelect = document.getElementById("team-select");
@@ -23,7 +23,7 @@ async function populateTeamDropdown() {
 
 // Load questions from the selected CSV file and reset timers
 async function loadQuestions(file) {
-  const response = await fetch(`questions/${file}`);
+  const response = await fetch(`./questions/${file}`);
   const data = await response.text();
   questions = data.split("\n").map((line) => line.trim());
   currentQuestionIndex = 0;
