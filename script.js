@@ -36,7 +36,8 @@ async function loadQuestions(file) {
 function displayQuestion() {
   const questionElement = document.getElementById("question");
   if (currentQuestionIndex < questions.length) {
-    console.log(currentQuestionIndex, questions.length);
+    document.getElementById("question-progress").textContent =
+      currentQuestionIndex + 1 + " of " + questions.length;
     questionElement.textContent = questions[currentQuestionIndex];
   } else {
     questionElement.textContent = "You have compleeted all the Questions !!!";
@@ -47,6 +48,14 @@ function displayQuestion() {
 function nextQuestion() {
   if (currentQuestionIndex < questions.length) {
     currentQuestionIndex++;
+    displayQuestion();
+    resetIntervalTimer();
+  }
+}
+// Handle previous question logic
+function prevQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
     displayQuestion();
     resetIntervalTimer();
   }
@@ -154,6 +163,7 @@ function startTimers() {
 
 // Event listeners
 document.getElementById("next-btn").addEventListener("click", nextQuestion);
+document.getElementById("prev-btn").addEventListener("click", prevQuestion);
 document
   .getElementById("play-pause-btn")
   .addEventListener("click", playPauseTimer);
@@ -182,6 +192,21 @@ function interpolateColor(startColor, endColor, factor) {
     .map((value) => value.toString(16).padStart(2, "0"))
     .join("")}`;
 }
+
+document.addEventListener("keydown", function (event) {
+  if (event.code === "ArrowLeft") {
+    event.preventDefault(); // Prevent scrolling when Spacebar is pressed
+    document.getElementById("prev-btn").click(); // Trigger the button click
+  }
+  if (event.code === "Space") {
+    event.preventDefault(); // Prevent scrolling when Spacebar is pressed
+    document.getElementById("play-pause-btn").click(); // Trigger the button click
+  }
+  if (event.code === "ArrowRight") {
+    event.preventDefault(); // Prevent scrolling when Spacebar is pressed
+    document.getElementById("next-btn").click(); // Trigger the button click
+  }
+});
 
 // Populate dropdown on page load
 window.onload = () => {
