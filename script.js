@@ -207,6 +207,9 @@ document.addEventListener("keydown", function (event) {
     document.getElementById("next-btn").click(); // Trigger the button click
   }
 });
+document.getElementById("scale").addEventListener("input", (e) => {
+  document.getElementById("main-container").style.scale = e.target.value;
+});
 
 // Populate dropdown on page load
 window.onload = () => {
