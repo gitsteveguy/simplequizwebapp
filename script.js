@@ -6,6 +6,9 @@ let intervalTimer = actualIntervalTimer;
 let totalTimer = actualTotalTimer;
 let isRunning = false; // Track if timer is running
 let time_interval;
+const green = "#1aa542"; // Start color (Green)
+const yellow = "#f7b500"; // Mid color (Yellow)
+const red = "#ff6347"; // End color (Red)
 
 // Fetch the list of available CSV files and populate the dropdown
 async function populateTeamDropdown() {
@@ -46,6 +49,15 @@ function displayQuestion() {
 
 // Handle next question logic
 function nextQuestion() {
+  if (!isRunning) {
+    if (
+      !confirm(
+        "You are going to the next question, wihout the timer on, are you sure ?"
+      )
+    ) {
+      return;
+    }
+  }
   if (currentQuestionIndex < questions.length) {
     currentQuestionIndex++;
     displayQuestion();
@@ -54,6 +66,15 @@ function nextQuestion() {
 }
 // Handle previous question logic
 function prevQuestion() {
+  if (!isRunning) {
+    if (
+      !confirm(
+        "You are going to the previous question, wihout the timer on, are you sure ?"
+      )
+    ) {
+      return;
+    }
+  }
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
     displayQuestion();
@@ -105,10 +126,6 @@ function startTimers() {
   const totalMax = actualTotalTimer;
   const intervalCircumference = 2 * Math.PI * 40;
   const totalCircumference = 2 * Math.PI * 40;
-
-  const green = "#76c043"; // Start color (Green)
-  const yellow = "#f7b500"; // Mid color (Yellow)
-  const red = "#ff6347"; // End color (Red)
 
   time_interval = setInterval(() => {
     // Interval Timer Countdown
