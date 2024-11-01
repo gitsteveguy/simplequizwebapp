@@ -8,13 +8,13 @@
 body {
   background: url("INTRO_ALGOARENA.gif");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   color: #e0e0e0;
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 1rem;
   margin: 0;
 }
 
@@ -72,7 +72,6 @@ a {
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
-  overflow: hidden;
 }
 
 .timer-container {
@@ -164,4 +163,25 @@ button:disabled {
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+@media screen and (max-width: 650px) {
+  .timers {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  .timer-container {
+    max-width: 85%;
+    justify-content: center;
+  }
+  .btn-container {
+    flex-direction: column;
+  }
+  #main-container {
+    width: 100%;
+  }
+  #scale-container {
+    display: none;
+  }
 }
