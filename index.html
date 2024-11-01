@@ -9,13 +9,24 @@
   <body>
     <div class="container">
       <h1>Quiz Questions</h1>
+      <select id="team-select">
+        <option value="">Select a team</option>
+        <!-- Options will be populated by JavaScript -->
+      </select>
       <div class="question-box">
         <p id="question">Loading...</p>
       </div>
       <div class="timers">
-        <p>Time Left (30 sec interval): <span id="interval-timer">30</span>s</p>
-        <p>Total Time Left (2 min): <span id="total-timer">120</span>s</p>
+        <div class="timer-container">
+          <p>Interval Timer</p>
+          <div class="circle-timer" id="interval-timer">30</div>
+        </div>
+        <div class="timer-container">
+          <p>Total Timer</p>
+          <div class="circle-timer" id="total-timer">120</div>
+        </div>
       </div>
+      <button id="play-pause-btn">Pause</button>
       <button id="next-btn">Next Question</button>
     </div>
 
