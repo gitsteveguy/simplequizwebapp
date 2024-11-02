@@ -14,8 +14,10 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 1rem;
   margin: 0;
+  height: 100vh;
 }
 
 .container {
@@ -28,6 +30,10 @@ body {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   width: 50%;
+}
+#main-container {
+  /* height: 100vh;
+  justify-content: center; */
 }
 #scale-container {
   position: fixed;
@@ -164,7 +170,11 @@ button:disabled {
   gap: 1rem;
   margin-top: 1rem;
 }
-
+@media screen and (max-width: 750px) {
+  body {
+    height: unset;
+  }
+}
 @media screen and (max-width: 650px) {
   .timers {
     flex-direction: column;
@@ -172,7 +182,7 @@ button:disabled {
     width: 100%;
   }
   .timer-container {
-    max-width: 85%;
+    width: unset;
     justify-content: center;
   }
   .btn-container {
