@@ -43,7 +43,7 @@ function displayQuestion() {
       currentQuestionIndex + 1 + " of " + questions.length;
     questionElement.textContent = questions[currentQuestionIndex];
   } else {
-    questionElement.textContent = "You have compleeted all the Questions !!!";
+    questionElement.textContent = "You have completed all the Questions !!!";
   }
 }
 
